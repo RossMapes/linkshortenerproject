@@ -1,4 +1,4 @@
-import { SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
 import { Link2, BarChart2, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,9 +43,6 @@ export default function Home() {
           — then track every click from a single dashboard.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <SignUpButton mode="modal">
-            <Button size="lg">Get Started Free</Button>
-          </SignUpButton>
           <SignInButton mode="modal">
             <Button size="lg" variant="outline">
               Sign In
