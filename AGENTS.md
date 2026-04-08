@@ -33,3 +33,4 @@ Enforcement steps (mandatory, in order):
 - Server Components are the default. Only add `'use client'` when strictly necessary.
 - Never hardcode secrets or credentials. Use environment variables.
 - Run `npm run lint` after any change to verify no ESLint violations.
+- **NEVER use `middleware.ts`** — it is deprecated in this version of Next.js. Use `proxy.ts` instead for all middleware/proxy logic.
