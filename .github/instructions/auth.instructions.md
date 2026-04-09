@@ -1,3 +1,7 @@
+---
+description: Read this before implementing or modifying authentication in the project.
+---
+
 # Authentication — Clerk
 
 ## Non-Negotiable Rule
@@ -6,11 +10,11 @@
 
 ## Route Protection Rules
 
-| Route | Behavior |
-|---|---|
-| `/dashboard` | Protected — requires the user to be signed in. Unauthenticated users are redirected to sign in. |
-| `/` (homepage) | Public — but if the user **is** signed in, redirect them to `/dashboard`. |
-| `/:slug` (short-link redirect) | Public — no auth required. |
+| Route                          | Behavior                                                                                        |
+| ------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `/dashboard`                   | Protected — requires the user to be signed in. Unauthenticated users are redirected to sign in. |
+| `/` (homepage)                 | Public — but if the user **is** signed in, redirect them to `/dashboard`.                       |
+| `/:slug` (short-link redirect) | Public — no auth required.                                                                      |
 
 Enforce these rules in `middleware.ts` using `clerkMiddleware`:
 
@@ -19,7 +23,12 @@ Enforce these rules in `middleware.ts` using `clerkMiddleware`:
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)", "/:slug"]);
+const isPublicRoute = createRouteMatcher([
+  "/",
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/:slug",
+]);
 const isDashboard = createRouteMatcher(["/dashboard(.*)"]);
 
 export default clerkMiddleware(async (auth, request) => {
@@ -37,7 +46,10 @@ export default clerkMiddleware(async (auth, request) => {
 });
 
 export const config = {
-  matcher: ["/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
+  ],
 };
 ```
 

@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "powershell": "$json = $input | ConvertFrom-Json; $fileTools = @('create_file','replace_string_in_file','multi_replace_string_in_file'); if ($fileTools -contains $json.tool_name) { npx prettier --write . }"
+      }
+    ]
+  }
+}

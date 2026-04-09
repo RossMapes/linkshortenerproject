@@ -1,5 +1,5 @@
 import { SignInButton } from "@clerk/nextjs";
-import { Link2, BarChart2, FolderOpen } from "lucide-react";
+import { Link2, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,12 +15,6 @@ const features = [
     title: "Shorten Any URL",
     description:
       "Paste a long link and get a clean, shareable short URL in seconds. No technical knowledge required.",
-  },
-  {
-    icon: BarChart2,
-    title: "Track Every Click",
-    description:
-      "See how many times your links are clicked in real time. Understand your audience and measure what matters.",
   },
   {
     icon: FolderOpen,
@@ -40,7 +34,7 @@ export default function Home() {
         </h1>
         <p className="max-w-xl text-lg text-muted-foreground">
           Turn unwieldy URLs into memorable short links you can share anywhere
-          — then track every click from a single dashboard.
+          — and share them anywhere.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <SignInButton mode="modal">

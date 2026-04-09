@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "powershell": "New-Item -ItemType Directory -Path 'tmp' -Force | Out-Null; $input | Out-File -FilePath \"tmp/$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds()).json\""
+      }
+    ]
+  }
+}
